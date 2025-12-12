@@ -5,16 +5,6 @@ description: "Why generic apps fail for Walmart DSV."
 
 Understanding the difference between Marketplace and Vendor (DSV) is critical to understanding why stdio exists.
 
-## The Divide
-
-| Feature | Marketplace (3P) | Vendor (1P / DSV) |
-| :--- | :--- | :--- |
-| Owner | You own the inventory. | Walmart owns the inventory. |
-| Price | You set the price. | Walmart sets the price. |
-| Protocol | Simple REST API. | EDI X12 via AS2. |
-| Shipping | Your rules. | Strict SLAs + Chargebacks. |
-| Tools | Shopify Apps. | Legacy Enterprise Software. |
-
 ## The Problem (The Gap)
 
 Most Shopify Apps (e.g., "Marketplace Connect") are built for the left column. They cannot handle EDI X12, AS2 Encryption, or the strict ASN (856) requirements of the Vendor program.

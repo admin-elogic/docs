@@ -1,12 +1,23 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "name": "stdio",
+  "name": "stdio_",
   "theme": "mint",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
+  "appearance": {
+    "default": "dark",
+    "strict": true
+  },
+  "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "Request API Keys",
+      "href": "mailto:access@stdio.so?subject=Requesting%20Beta%20Access"
+    }
+  },
   "colors": {
     "primary": "#00E599",
     "light": "#00E599",
@@ -29,16 +40,16 @@
           {
             "group": "Protocol (EDI)",
             "pages": [
-              "core-concepts/marketplace-vs-vendor",
-              "core-concepts/x12-translation"
+              "marketplace-vs-vendor",
+              "x12-translation"
             ]
           },
           {
             "group": "IO / Endpoints",
             "pages": [
-              "api-reference/ingest-order",
-              "api-reference/shipments",
-              "api-reference/connections"
+              "ingest-order",
+              "shipments",
+              "connections"
             ]
           }
         ]

@@ -11,18 +11,28 @@ stdio is not a SaaS. It is invisible infrastructure. We convert the bureaucratic
 
 We are the steel pipe through which millions of dollars flow. We do not design for "users". We design for The Cynical Developer who has 20 tabs open and hates marketing fluff.
 
+## The Divide: Marketplace vs Vendor
+
+| Feature | Marketplace (3P) | Vendor (1P / DSV) |
+| :--- | :--- | :--- |
+| Owner | You own the inventory. | Walmart owns the inventory. |
+| Price | You set the price. | Walmart sets the price. |
+| Protocol | Simple REST API. | EDI X12 via AS2. |
+| Shipping | Your rules. | Strict SLAs + Chargebacks. |
+| Tools | Shopify Apps. | Legacy Enterprise Software. |
+
 ## Architecture
 
 <div className="my-4">
 ```mermaid
 graph LR
-    A[Shopify Store] -- JSON Webhook --> B(stdio API)
-    B -- Zod Validation --> C{Valid?}
-    C -- No --> D[Error 400 + Log]
-    C -- Yes --> E[Generate X12 850]
-    E -- AS2 Secure --> F[Walmart Vendor Central]
-    style B fill:#00E599,color:#000,stroke:#fff
-    style F fill:#0A0A0A,color:#fff,stroke:#fff
+  A[Shopify Store] -- Webhook JSON --> B(stdio API)
+  B -- Zod Validation --> C{Valid?}
+  C -- No --> D[Error 400]
+  C -- Yes --> E[X12 Parser]
+  E -- AS2 --> F[Walmart Vendor Central]
+  style B fill:#00E599,color:#000
+  style F fill:#333,color:#fff
 ```
 </div>
 
