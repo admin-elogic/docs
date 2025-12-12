@@ -1,51 +1,49 @@
----
-title: "Quickstart"
-description: "Send your first EDI order in 5 minutes."
----
+title: "Quickstart" description: "Execute your first EDI transaction in 30 seconds."
 
-## Prerequisites
-
-1. **API Key**: Get your API key from the [Dashboard](https://dashboard.ediconnect.com).
-2. **Retailer Code**: You need a valid retailer code (e.g., `WALMART_US`). For testing, use `TEST_RETAILER`.
-
-## Step 1: Authenticate
-
-Add your API key to the `Authorization` header.
+<Steps>
+<Step title="Configure Environment">
+Export your API Key.
+bash export STDIO_KEY=&quot;sk_test_123456789&quot; 
+</Step>
+<Step title="Ingest Order (850)">
+Simulate a Shopify Webhook event. This will trigger the JSON -> X12 translation.
 
 ```bash
-Authorization: Bearer sk_test_123456789
-```
-
-## Step 2: Send a Test Order
-
-Send a POST request to the ingestion endpoint.
-
-```bash
-curl -X POST https://api.ediconnect.com/v1/orders/ingest \
-  -H "Authorization: Bearer sk_test_123456789" \
+curl -X POST [https://api.stdio.io/v1/orders/ingest](https://api.stdio.io/v1/orders/ingest) \
+  -H "Authorization: Bearer $STDIO_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "shopify_order_id": "test_1",
-    "retailer_code": "TEST_RETAILER",
+    "shopify_order_id": "test_101",
+    "retailer_code": "WALMART_US",
     "shipping_address": {
-      "address1": "123 Test Ln",
-      "city": "Testville",
-      "state": "NY",
-      "zip": "10001"
+      "address1": "702 SW 8th St",
+      "city": "Bentonville",
+      "state": "AR",
+      "zip": "72712"
     },
     "items": [
-      { "sku": "TEST-SKU", "quantity": 10 }
+      { "sku": "WM-SKU-001", "quantity": 10 }
     ]
   }'
 ```
 
-## Step 3: Check Status
 
-You should receive a `200 OK` response.
+</Step>
+<Step title="Verify Output">
+You should receive a queued status immediately.
 
 ```json
 {
-  "edi_status": "queued",
-  "trace_id": "evt_test_123"
+  "status": "queued",
+  "trace_id": "evt_8f7d9a8s7d",
+  "latency_ms": 45
 }
 ```
+
+
+</Step>
+</Steps>
+
+<Check>
+Success: If you see a trace_id, the X12 file has been generated and queued for the AS2 pipe.
+</Check>

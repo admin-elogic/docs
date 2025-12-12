@@ -1,6 +1,17 @@
----
-title: "Connections"
-description: "Managing retailer connections."
----
+title: "Connections" api: "GET /v1/connections" description: "List active Retailer pipes."
 
-Coming soon.
+Retrieves the status of your configured AS2 connections.
+
+Response
+
+```json
+[
+  {
+    "id": "conn_walmart_01",
+    "retailer": "WALMART_US",
+    "status": "active",
+    "last_heartbeat": "2023-10-27T10:00:00Z",
+    "as2_id": "WALMARTGP"
+  }
+]
+```

@@ -3,8 +3,8 @@
   "name": "stdio",
   "theme": "mint",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/dark.png",
+    "light": "/logo/light.png"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -15,29 +15,30 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Docs",
+        "tab": "Terminal",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "System",
             "pages": [
               "introduction",
+              "manifesto",
               "authentication",
               "quickstart"
             ]
           },
           {
-            "group": "Core Concepts",
+            "group": "Protocol (EDI)",
             "pages": [
               "core-concepts/marketplace-vs-vendor",
               "core-concepts/x12-translation"
             ]
           },
           {
-            "group": "API Reference",
+            "group": "IO / Endpoints",
             "pages": [
-              "api-reference/connections",
               "api-reference/ingest-order",
-              "api-reference/shipments"
+              "api-reference/shipments",
+              "api-reference/connections"
             ]
           }
         ]
@@ -45,8 +46,6 @@
     ]
   },
   "footerSocials": {
-    "twitter": "https://twitter.com/ediconnect",
-    "github": "https://github.com/ediconnect",
-    "linkedin": "https://linkedin.com/company/ediconnect"
+    "github": "https://github.com/ediconnect"
   }
 }
