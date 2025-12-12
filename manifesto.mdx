@@ -1,0 +1,76 @@
+---
+title: "Manifesto"
+description: "Infrastructure for the cynical developer."
+---
+
+## 1. The Vision
+
+**stdio** is not a SaaS tool. It is Invisible Infrastructure.
+
+We are not building something for people to "spend time" in. We are building something for people to configure and forget. We are the steel pipe through which millions of dollars flow. We are not the pretty wallpaper.
+
+**Mission**: Convert the bureaucratic chaos of EDI into clean, predictable JSON.
+
+**Enemy**: Complexity, "Drag and Drop" UIs, slow Wizards, and Marketing Fluff.
+
+## 2. The User
+
+We do not design for the "Average User". We design for **The Cynical Developer**.
+
+*   **Profile**: Agency CTO or Senior Backend Dev.
+*   **State of Mind**: Stressed, 20 tabs open in VS Code, drinking cold coffee, hates being sold smoke.
+*   **Values**: `CTRL+C` / `CTRL+V`, Clear Documentation, Dark Mode, Speed (&lt;100ms).
+*   **Hates**: Welcome modals, guided tours, excessive whitespace, animations lasting > 0.2s.
+
+## 3. Design Principles
+
+### A. Terminal-First Aesthetic
+
+Our interface must feel like an extension of the IDE (VS Code) or the Terminal.
+
+*   **Information Density > Whitespace**. A developer prefers 50 lines of logs over 5 pretty cards with shadows.
+*   **Monospace is King**. Data (JSON, Order IDs, Errors) is always monospace.
+*   **Syntax Highlighting**. Everything that looks like code must have Syntax Highlighting.
+
+### B. Functional Brutalism
+
+*   **No Decoration**. No illustrations of "people working". No 3D icons.
+*   **Sharp Edges**. `border-radius: 0px` or `4px` max. No soft, round buttons.
+*   **High Contrast**. No gray on gray. White on Black. Military readability.
+
+### C. The "Zero Click" Rule
+
+The best UI is the one that doesn't exist. If the user can do it via API, the UI is secondary. The UI is only for Observability (logs/errors) and Access Management (API Keys). Not for operations.
+
+## 4. Visual System
+
+### Palette ("The Terminal")
+
+*   **Void (Background)**: `#0A0A0A`
+*   **Panel (Surface)**: `#000000`
+*   **Signal (Text)**: `#EDEDED`
+*   **Accent**: `#00E599` (Neon Green) - Only for: "Connected", "200 OK", "Copy API Key".
+*   **Critical**: `#FF3333` (Terminal Red) - For validation failures.
+
+### Typography
+
+*   **Primary**: Inter or Geist Sans.
+*   **Code**: JetBrains Mono or Geist Mono.
+
+## 5. Voice & Tone
+
+We speak like the operating system, not a friend.
+
+| ❌ Marketing | ✅ stdio |
+| :--- | :--- |
+| "Oops! Something went wrong, try again." | `Error 500: Internal Server Error. Trace ID: x8s9d` |
+| "Welcome to stdio! Let's start your journey." | `Ready. Initialize connection.` |
+| "Need help with your integration?" | `Docs` / `API Reference` |
+| "Our magic AI processes your data." | `JSON validated. X12 Generated.` |
+
+## 6. Anti-Features
+
+*   **Drag-and-Drop Builders**: Field mapping is done via code.
+*   **Light Mode**: Not a priority. We are born in the dark.
+*   **Analytics Dashboards**: We care about "Requests per Second" and "Error Rate", not GMV.
+*   **Support Chatbots**: Support is a link to docs or a direct email to an engineer.

@@ -1,0 +1,110 @@
+---
+title: "Ingest Shopify Order"
+api: "POST /v1/orders/ingest"
+description: "Send a Shopify Order JSON to be validated and queued for EDI transmission."
+---
+
+This endpoint accepts a standard JSON payload, typically transformed from a Shopify `orders/create` webhook. It performs strict schema validation against the specific retailer's EDI requirements (e.g., Walmart 850 spec) before queuing the document for translation and AS2 transmission.
+
+## Body
+
+<ParamField body="shopify_order_id" type="string" required>
+  The unique identifier for the order from Shopify. Used for deduplication and tracing.
+</ParamField>
+
+<ParamField body="retailer_code" type="string" required>
+  The identifier for the trading partner.
+  Allowed values: `WALMART_US`, `TARGET_US`, `COSTCO_US`.
+</ParamField>
+
+<ParamField body="shipping_address" type="object" required>
+  The destination address for the shipment (usually a DC or Store).
+  <Expandable title="properties">
+    <ParamField body="address1" type="string" required>
+      Street address. Max length: 55 characters.
+    </ParamField>
+    <ParamField body="city" type="string" required>
+      City name.
+    </ParamField>
+    <ParamField body="state" type="string" required>
+      2-letter state code (ISO 3166-2).
+    </ParamField>
+    <ParamField body="zip" type="string" required>
+      Postal code. Must be 5 or 9 digits.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="items" type="array" required>
+  List of line items in the order.
+  <Expandable title="Item Object">
+    <ParamField body="sku" type="string" required>
+      The vendor's SKU. Must match the retailer's catalog.
+    </ParamField>
+    <ParamField body="quantity" type="integer" required>
+      Number of units ordered.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+## Response
+
+<ResponseField name="edi_status" type="string">
+  Current status of the EDI translation.
+  Example: `queued`
+</ResponseField>
+
+<ResponseField name="trace_id" type="string">
+  Unique ID for tracking this transaction through the AS2 network.
+  Example: `evt_1234567890`
+</ResponseField>
+
+<ResponseField name="validation_errors" type="array">
+  List of validation errors if the request failed schema checks.
+</ResponseField>
+
+## Examples
+
+<CodeGroup>
+
+```json Request
+{
+  "shopify_order_id": "54321",
+  "retailer_code": "WALMART_US",
+  "shipping_address": {
+    "address1": "123 Sam Walton Ln",
+    "city": "Bentonville",
+    "state": "AR",
+    "zip": "72712"
+  },
+  "items": [
+    {
+      "sku": "WM-1001",
+      "quantity": 500
+    }
+  ]
+}
+```
+
+```json 200 OK
+{
+  "edi_status": "queued",
+  "trace_id": "evt_1234567890"
+}
+```
+
+```json 400 Bad Request
+{
+  "error": "validation_failed",
+  "message": "Schema validation failed for retailer WALMART_US",
+  "validation_errors": [
+    {
+      "field": "shipping_address.zip",
+      "message": "Zip code must be 5 digits",
+      "received": "7271"
+    }
+  ]
+}
+```
+
+</CodeGroup>
