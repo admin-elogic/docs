@@ -1,12 +1,16 @@
-title: "Create Shipment (ASN)" api: "POST /v1/shipments" description: "Trigger EDI 856 generation."
+---
+title: "Create Shipment (ASN)"
+api: "POST /v1/shipments"
+description: "Trigger EDI 856 generation."
+---
 
 Call this endpoint when a package is labeled and ready for pickup. This generates the EDI 856 (Advance Ship Notice) and pushes it to the retailer via AS2.
 
-Critical Requirement
+## Critical Requirement
 
 You must provide a valid tracking number. This is not optional.
 
-Body Parameters
+## Body Parameters
 
 <ParamField body="po_number" type="string" required>
 The original Purchase Order number provided by the retailer.

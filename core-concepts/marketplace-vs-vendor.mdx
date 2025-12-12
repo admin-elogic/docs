@@ -1,58 +1,30 @@
+---
 title: "Marketplace vs Vendor"
 description: "Why generic apps fail for Walmart DSV."
+---
 
 Understanding the difference between Marketplace and Vendor (DSV) is critical to understanding why stdio exists.
 
-The Divide
+## The Divide
 
-Feature
+| Feature | Marketplace (3P) | Vendor (1P / DSV) |
+| :--- | :--- | :--- |
+| Owner | You own the inventory. | Walmart owns the inventory. |
+| Price | You set the price. | Walmart sets the price. |
+| Protocol | Simple REST API. | EDI X12 via AS2. |
+| Shipping | Your rules. | Strict SLAs + Chargebacks. |
+| Tools | Shopify Apps. | Legacy Enterprise Software. |
 
-Marketplace (3P)
-
-Vendor (1P / DSV)
-
-Owner
-
-You own the inventory.
-
-Walmart owns the inventory.
-
-Price
-
-You set the price.
-
-Walmart sets the price.
-
-Protocol
-
-Simple REST API.
-
-EDI X12 via AS2.
-
-Shipping
-
-Your rules.
-
-Strict SLAs + Chargebacks.
-
-Tools
-
-Shopify Apps.
-
-Legacy Enterprise Software.
-
-The Problem (The Gap)
+## The Problem (The Gap)
 
 Most Shopify Apps (e.g., "Marketplace Connect") are built for the left column. They cannot handle EDI X12, AS2 Encryption, or the strict ASN (856) requirements of the Vendor program.
 
 If you try to use a Marketplace tool for a Vendor contract:
 
-Walmart will not receive your shipment data.
+1. Walmart will not receive your shipment data.
+2. You will be fined (Chargebacks).
+3. Your contract will be terminated.
 
-You will be fined (Chargebacks).
-
-Your contract will be terminated.
-
-The Solution
+## The Solution
 
 stdio bridges this gap. We allow you to treat a Vendor Contract like a Marketplace channel. You send JSON; we handle the 1990s bureaucracy.

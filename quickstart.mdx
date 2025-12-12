@@ -1,15 +1,21 @@
-title: "Quickstart" description: "Execute your first EDI transaction in 30 seconds."
+---
+title: "Quickstart"
+description: "Execute your first EDI transaction in 30 seconds."
+---
 
 <Steps>
 <Step title="Configure Environment">
 Export your API Key.
-bash export STDIO_KEY=&quot;sk_test_123456789&quot; 
+
+```bash
+export STDIO_KEY="sk_test_123456789"
+```
 </Step>
 <Step title="Ingest Order (850)">
 Simulate a Shopify Webhook event. This will trigger the JSON -> X12 translation.
 
 ```bash
-curl -X POST [https://api.stdio.io/v1/orders/ingest](https://api.stdio.io/v1/orders/ingest) \
+curl -X POST https://api.stdio.io/v1/orders/ingest \
   -H "Authorization: Bearer $STDIO_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -26,8 +32,6 @@ curl -X POST [https://api.stdio.io/v1/orders/ingest](https://api.stdio.io/v1/ord
     ]
   }'
 ```
-
-
 </Step>
 <Step title="Verify Output">
 You should receive a queued status immediately.
@@ -39,8 +43,6 @@ You should receive a queued status immediately.
   "latency_ms": 45
 }
 ```
-
-
 </Step>
 </Steps>
 

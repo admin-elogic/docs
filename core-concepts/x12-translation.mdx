@@ -1,34 +1,31 @@
-title: "X12 Translation Layer" description: "How we map JSON to EDI X12."
+---
+title: "X12 Translation Layer"
+description: "How we map JSON to EDI X12."
+---
 
 We do not use black-box magic. Our mapping logic is deterministic and transparent.
 
-The Inbound Flow (850 -> JSON)
+## The Inbound Flow (850 -> JSON)
 
 When Walmart sends a Purchase Order (850), we extract only the fields necessary for Shopify fulfillment.
 
-BEG-03 -> shopify_order_id (PO Number)
+* BEG-03 -> shopify_order_id (PO Number)
+* DTM-02 -> created_at
+* N1*ST -> shipping_address
+* PO1 Loop -> line_items
 
-DTM-02 -> created_at
-
-N1*ST -> shipping_address
-
-PO1 Loop -> line_items
-
-The Outbound Flow (JSON -> 856)
+## The Outbound Flow (JSON -> 856)
 
 This is the most critical transaction. The ASN (856) tells Walmart a package is on the way.
 
-SOIP Structure
+### SOIP Structure
 
 We automatically structure your flat JSON into the required X12 Hierarchy:
 
-S (Shipment): Carrier tracking (TD5 segment).
-
-O (Order): Reference to original PO (PRF segment).
-
-I (Item): SKU details (LIN segment).
-
-P (Pack): Physical packaging (MAN segment).
+* S (Shipment): Carrier tracking (TD5 segment).
+* O (Order): Reference to original PO (PRF segment).
+* I (Item): SKU details (LIN segment).
+* P (Pack): Physical packaging (MAN segment).
 
 <Warning>
 Tracking Numbers are Mandatory. If you send an ASN without a valid tracking number in the TD5 segment, Walmart will reject the payment.

@@ -1,4 +1,7 @@
-title: "Authentication" description: "Bearer Token Security."
+---
+title: "Authentication"
+description: "Bearer Token Security."
+---
 
 All API requests must be authenticated using a Bearer Token in the HTTP Header.
 
@@ -6,35 +9,23 @@ All API requests must be authenticated using a Bearer Token in the HTTP Header.
 Security Notice: Your API Key carries full write access to the EDI stream. Do not share it with the Merchant/Store Owner. Keep it in your .env file.
 </Warning>
 
-Header Format
+## Header Format
 
+```bash
 Authorization: Bearer sk_live_xxxxxxxxxxxxxxxx
+```
 
-
-Obtaining Keys
+## Obtaining Keys
 
 Since we adhere to the No UI Axiom, keys are issued manually during the onboarding phase or retrieved via the CLI tool (if available).
 
-Test Environment: sk_test_...
+Test Environment: `sk_test_...`
 
-Production Environment: sk_live_...
+Production Environment: `sk_live_...`
 
-Error Codes
+## Error Codes
 
-Status
-
-Code
-
-Meaning
-
-401
-
-unauthorized
-
-Missing or invalid API Key.
-
-403
-
-forbidden
-
-Key valid, but insufficient permissions for this Retailer.
+| Status | Code | Meaning |
+| :--- | :--- | :--- |
+| 401 | unauthorized | Missing or invalid API Key. |
+| 403 | forbidden | Key valid, but insufficient permissions for this Retailer. |

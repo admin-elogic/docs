@@ -1,14 +1,17 @@
-title: "System Status" description: "Operational. Latency < 100ms."
+---
+title: "System Status"
+description: "Operational. Latency < 100ms."
+---
 
 <Note>
 stdio is not a SaaS. It is invisible infrastructure. We convert the bureaucratic chaos of EDI into clean, predictable JSON.
 </Note>
 
-The Mission
+## The Mission
 
 We are the steel pipe through which millions of dollars flow. We do not design for "users". We design for The Cynical Developer who has 20 tabs open and hates marketing fluff.
 
-Architecture
+## Architecture
 
 <div className="my-4">
 ```mermaid
@@ -23,7 +26,7 @@ graph LR
 ```
 </div>
 
-Protocol Translation
+## Protocol Translation
 
 We abstract the entire legacy EDI layer into a RESTful JSON API.
 
@@ -40,17 +43,17 @@ We abstract the entire legacy EDI layer into a RESTful JSON API.
 }
 ```
 
-
-ISA*00* *00* *ZZ*SENDERID       *ZZ*RECEIVERID...
+```text Legacy (X12)
+ISA*00*          *00*          *ZZ*SENDERID       *ZZ*RECEIVERID...
 ST*850*0001~
 BEG*00*NE*54321**20231212~
 PO1*1*500*EA*12.50**VN*WM-1001~
 SE*8*0001~
-
+```
 
 </CodeGroup>
 
-Operational Axioms
+## Operational Axioms
 
 <CardGroup cols={2}>
 <Card title="Dumb Pipe" icon="pipe">
@@ -60,7 +63,7 @@ We do not validate commercial logic. If you send garbage prices, we send garbage
 Configuration is done via JSON. We don't have a drag-and-drop builder.
 </Card>
 <Card title="Fail Fast" icon="bolt">
-Strict Zod schemas. We reject invalid data in < 50ms with explicit error messages.
+Strict Zod schemas. We reject invalid data in &lt; 50ms with explicit error messages.
 </Card>
 <Card title="JSON First" icon="code">
 You never have to read an EDI implementation guide.

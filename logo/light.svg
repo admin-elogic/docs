@@ -1,0 +1,8 @@
+<svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#00E599" stroke-width="4" stroke-linecap="square">
+    <path d="M18 4 L4 4 L4 28" />
+    <path d="M12 11 L20 16 L12 21" />
+    <path d="M4 36 L20 36" />
+  </g>
+  <text x="35" y="32" fill="#00E599" font-family="Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace" font-weight="bold" font-size="32" letter-spacing="-1">stdio</text>
+</svg>

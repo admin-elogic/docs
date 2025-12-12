@@ -1,14 +1,18 @@
-title: "Ingest Order" api: "POST /v1/orders/ingest" description: "Shopify Webhook Receiver."
+---
+title: "Ingest Order"
+api: "POST /v1/orders/ingest"
+description: "Shopify Webhook Receiver."
+---
 
 This endpoint acts as the entry point for the Dumb Pipe. It accepts a JSON payload (typically from a Shopify orders/create webhook), validates it against the Retailer's strict schema (Zod), and queues it for X12 generation.
 
-Validation Rules
+## Validation Rules
 
 <Note>
 We Fail Fast. If a ZIP code is 4 digits, we reject the request immediately. We do not attempt to "fix" data.
 </Note>
 
-Body Parameters
+## Body Parameters
 
 <ParamField body="shopify_order_id" type="string" required>
 Unique reference from Shopify. Used for idempotency.
@@ -30,7 +34,7 @@ Must be > 0.
 </Expandable>
 </ParamField>
 
-Response Examples
+## Response Examples
 
 <CodeGroup>
 
